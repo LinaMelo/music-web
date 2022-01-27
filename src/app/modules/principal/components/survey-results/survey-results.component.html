@@ -1,0 +1,41 @@
+<div class="container-results">
+    <div class="row ">
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="center-horizontal">
+                <h3 class="center-vertical" style="font-size: 22px;">
+                    <strong>Resultados de todos los géneros musicales.</strong>
+                </h3>
+            </div>
+        </div>
+        <div class="col-8 col-sm-8 col-md-8 center-horizontal">
+            <mat-form-field class="form-email full-width" appearance="fill" [ngClass]="[music_genre.valid ? 'input-success' : 'input-err']">
+                <mat-label class="label-form">Género de música</mat-label>
+                <mat-select [formControl]="music_genre" (selectionChange)="changeGenre(music_genre.value)" required>
+                    <mat-option *ngFor="let item of musicGenreList" [value]="item">{{item}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="music_genre.invalid ">{{ getErrorMessageMusicGenre() }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="preload" class="full-width center-vertical center-horizontal">
+            <img src="./assets/img/load.svg" alt="" height="100px">
+        </div>
+        <table *ngIf="!preload" mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table full-width" style="padding: 10px;">
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
+                <td mat-cell *matCellDef="let element">{{element.email}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="genero">
+                <th mat-header-cell *matHeaderCellDef>Genero </th>
+                <td mat-cell *matCellDef="let element">{{element.musicGenre}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()" class="btn-header">
+             <mat-icon class="btn-menu-header">menu</mat-icon>
+          </button>
+        <span>
+            Music App
+          </span>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav class="nav-bar" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a class="color-blue" mat-list-item (click)="snav.toggle()" [routerLink]="['survey']">
+                    <mat-icon style="margin-right: 15px;">how_to_vote</mat-icon>Encuesta</a>
+                <a class="color-blue" mat-list-item (click)="snav.toggle()" [routerLink]="['results']">
+                    <mat-icon style="margin-right: 15px;">insert_chart_outlined</mat-icon>Resultados</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content style="display: flex; flex-direction: column;">
+            <div class="container" [style.marginTop.px]="mobileQuery.matches ? 0 : 30">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

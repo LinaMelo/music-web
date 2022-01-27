@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="center-horizontal">
+            <h3 class="center-vertical" style="font-size: 22px;">
+                <strong>Encuesta de Música</strong>
+            </h3>
+        </div>
+    </div>
+    <div class="col-8 col-sm-8 col-md-8 center-horizontal">
+        <mat-form-field class="form-email full-width" appearance="fill" [ngClass]="[emailForm.valid ? 'input-success' : 'input-err']">
+            <mat-label class="label-form">Correo Electronico</mat-label>
+            <input type="text" matInput [formControl]="emailForm" required />
+            <mat-error *ngIf="emailForm.invalid">{{ getErrorMessageEmail() }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="col-8 col-sm-8 col-md-8 center-horizontal">
+        <mat-form-field class="form-email full-width" appearance="fill" [ngClass]="[music_genre.valid ? 'input-success' : 'input-err']">
+            <mat-label class="label-form">Género de música</mat-label>
+            <mat-select [formControl]="music_genre" required>
+                <mat-option *ngFor="let item of musicGenreList" [value]="item">{{item}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="music_genre.invalid ">{{ getErrorMessageMusicGenre() }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 center-horizontal">
+        <button mat-raised-button color="accent" [disabled]="music_genre.invalid &&emailForm.invalid" (click)="sendSurvey()">
+            <mat-icon style="margin-right: 15px;">send</mat-icon>Enviar </button>
+    </div>
+    <div *ngIf="preload" class="full-width center-vertical center-horizontal">
+        <img src="./assets/img/load.svg" alt="" height="100px">
+    </div>
+    <div *ngIf="showResults">
+        <app-survey-results></app-survey-results>
+    </div>
+</div>

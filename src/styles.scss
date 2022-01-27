@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    background-color: rgb(224, 224, 224);
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.full-height {
+    height: 100vh !important;
+}
+
+.center-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.display-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.display-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container {
+    margin: 20px;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.form-email {
+    padding-left: 20%;
+    padding-right: 20%;
+}
